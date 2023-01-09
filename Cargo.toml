@@ -1,0 +1,10 @@
+[package]
+name = "ftp_winapi_upload"
+version = "0.1.0"
+edition = "2021"
+author = "her0mx"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+winapi = {version="0.3.9", features = ["wininet","errhandlingapi","minwindef","minwinbase"]}
+widestring = "0.5.1"
