@@ -49,6 +49,7 @@ fn main() {
             exit(2);
         }
         println!("InternetConnectW Success");
+
         //TODO HERE START TO LIST THE FILES AND MOVE TO DIR
         let mut file_name = zeroed::<WIN32_FIND_DATAW>();
         let mut ftp_file = FtpFindFirstFileW(
@@ -91,7 +92,7 @@ fn main() {
             //TODO here change directory and upload the file
             match final_name.as_str(){
                 "domains"=>{
-                    let format_domains =  U16String::from_str(final_name.as_str());
+                    let format_domains =  U16String::from_str("domains\0");
                     let change_to_domains =FtpSetCurrentDirectoryW(
                         ftp_connect,
                         format_domains.as_ptr(),
@@ -115,7 +116,7 @@ fn main() {
                     }
                     println!("Success Change Domain Folder");
 
-                    let format_public_html =U16String::from_str("public_html");
+                    let format_public_html =U16String::from_str("public_html\0");
                     let change_to_public_html_folder =FtpSetCurrentDirectoryW(
                         ftp_connect,
                         format_public_html.as_ptr(),
@@ -144,7 +145,7 @@ fn main() {
                     break;
                 },
                 "public_html"=>{
-                    let format_public_html =U16String::from_str(final_name.as_str());
+                    let format_public_html =U16String::from_str("public_html\0");
                     let change_to_public_html_folder =FtpSetCurrentDirectoryW(
                         ftp_connect,
                         format_public_html.as_ptr(),
